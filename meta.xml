@@ -1,0 +1,5 @@
+<meta>
+	<info name="clickwarp" type="script" version="1.0.0" author="Sambrerka(Remake mod_sa)" />
+	<script src="server.lua" type ="server" cache="false"/>
+	<script src="client.lua" type ="client" cache="false"/>
+</meta>
