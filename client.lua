@@ -56,16 +56,16 @@ function click()
 					local idCar = getElementModel(object);
 					local name = getVehicleName(object);
 					car_info = object;
-					dxDrawText(string.format("Hold right mouse button to teleport into the car Vehicle: %s[%d]", name,idCar), sw * sx + 40  , sh * sy - 20 )
+					dxDrawText(string.format("Hold right mouse to teleport to the Vehicle: %s[%d]", name,idCar), sw * sx + 40  , sh * sy - 20 )
 				end
 				-- dist to point
 				local dist = getDistanceBetweenPoints3D(curX, curY, curZ, pos)
 				dxDrawText(string.format("Distance: %0.2fm ", dist), sw * sx + 40  , sh * sy )
 				
 				if getKeyState(keyApply) then
-					local car = isCharInAnyCar(car_info) 
+					local car = isInAnyCar(car_info) 
 					if car then
-						-- If the player is already in the car
+					    	-- If the player is already in the car
 						if getPedOccupiedVehicle(localPlayer) then
 							teleport(car,pos)
 						elseif getKeyState(keyOnCar) then -- if press mouse2 and mouse 1 > Teleport to the car
@@ -94,7 +94,7 @@ function teleport(vehicle,pos)
 end
 
 
-function isCharInAnyCar(veh)
+function isInAnyCar(veh)
 	return veh or getPedOccupiedVehicle(localPlayer)
 end
 
