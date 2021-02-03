@@ -16,14 +16,15 @@ end
 
 
 function click()
+	if cursorEnable and not isCursorShowing() then
+		showCursor(true)
+	end
 	if isPauseMenuActive() then
 		if cursorEnable and isCursorShowing() then
 			showCursor(false)
 		end 
 	end 
-	if cursorEnable and not isCursorShowing() then
-		showCursor(true)
-	end
+	
 
 	if cursorEnable and not isPauseMenuActive() then
 		local sx, sy, posX, posY, posZ = getCursorPosition()
@@ -121,6 +122,9 @@ function start()
 	showCursor(cursorEnable)
 	if not cursorEnable then 
 		removeEventHandler("onClientRender", root, click)
+		if isElement(marker) then
+			destroyElement(marker)
+		end
 	else
 		addEventHandler("onClientRender", root, click)
 	end
@@ -144,4 +148,3 @@ function onClientRestore()
     isMinimuze = false 
 end
 addEventHandler("onClientRestore", root ,onClientRestore)
-
